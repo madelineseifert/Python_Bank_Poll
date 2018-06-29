@@ -15,16 +15,13 @@ with open(budgetCSV, newline="") as csvfile:
         votecount = votecount + 1
         candidate = row[2]
         listcandidates.append(candidate)
-        #for candidate in listcandidates:
-            #if candidate not in listcandidates:
-                #listcandidates.append(candidate)        
-                               
-    print(votecount)
+        
+    #print(votecount)
     candidates = []
     for cand in listcandidates:
             if cand not in candidates:
                 candidates.append(cand)
-    print(candidates)
+    #print(candidates)
 
     votecounts = [0, 0, 0, 0]
 
@@ -37,7 +34,7 @@ with open(budgetCSV, newline="") as csvfile:
             votecounts[2] += 1
         else:
             votecounts[3] += 1           
-    print(votecounts)
+    #print(votecounts)
 
     percents = []
 
@@ -46,8 +43,29 @@ with open(budgetCSV, newline="") as csvfile:
         roundpercent = round(percent, 3)
         percents.append(roundpercent)
     
-    print(percents)
-    results = zip(votecounts, candidates, percents)
-    print(results)
+    listlength = len(votecounts)
+    winnerindex = 0
+    winnervote = 0
     
+    for i in range(listlength):
+        if votecounts[i] > winnervote:
+            winnervote = votecounts[i]
+            maxIndex = i
+    #print(winnervote)
+    #print(winnerindex)
+
+    print("Election Results")
+    print("-------------------------")
+    print("Total Votes:" + str(votecount))
+    print("-------------------------")
+    print(candidates[0] + ": " + str(percents[0]) + "% (" + str(votecounts[0]) + ")")
+    print(candidates[1] + ": " + str(percents[1]) + "% (" + str(votecounts[1]) + ")")
+    print(candidates[2] + ": " + str(percents[2]) + "% (" + str(votecounts[2]) + ")")
+    print(candidates[3] + ": " + str(percents[3]) + "% (" + str(votecounts[3]) + ")")
+    print("-------------------------")
+    print("Winner: %s" % (candidates[winnerindex]))
+    print("-------------------------")
+
+         
+
 
