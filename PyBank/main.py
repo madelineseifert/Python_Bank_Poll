@@ -42,7 +42,22 @@ with open(budgetCSV, newline="") as csvfile:
     print("Greatest Increase in Profits: %s ($%s)" %(maximummonth, maximum))
 
     print("Greatest Decrease in Profits: %s ($%s)" % (minimummonth, minimum))
-    
+text_file = open("Output.txt", "w")
+text_file.write("Financial Analysis" +"\n" +
+                "----------------------------" +"\n" +
+                "Total Months: " + str(monthcount) + "\n" + 
+                "Total: $" + str(netprofitloss) + "\n" +
+                "Average Change: $" + str(round((netprofitloss/monthcount), 2)) + "\n" +
+                "Greatest Increase in Profits: %s ($%s)" %(maximummonth, maximum) + "\n" +
+                "Greatest Decrease in Profits: %s ($%s)" % (minimummonth, minimum) + "\n")
+
+   
   
    
 
+
+
+   
+   
+    
+    
