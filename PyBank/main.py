@@ -15,29 +15,34 @@ with open(budgetCSV, newline="") as csvfile:
     netprofitloss = 0
     increase = 0
     decrease = 0
+    maximum = 0
+    maximummonth = 0
+    minimum = 0
+    minimummonth = 0
     rowints = []
     months = []
 
     for row in csvreader:
         monthcount = monthcount +1
         netprofitloss += int(row[1])
-        rowint = int(row[1])
-        rowints.append(rowint)
-        months.append(row[0])
+        if int(row[1]) > maximum:
+            maximum = int(row[1])
+            maximummonth = str(row[0])
+        if int(row[1]) < minimum:
+            minimum = int(row[1])
+            minimummonth = str(row[0])
         
       
     print("Total Months: " + str(monthcount))
     print("Total: $" + str(netprofitloss))
     print("Average Change: $" + str(round((netprofitloss/monthcount), 2)))
 
-    profitlist = zip(months, rowints)
-    listlength = len(profitlist)
-    for i in range(listlength):
-        maximum = max(profitlist)
-        print("Greatest Increase in Profits: %s ($%r)" % (maximum))
+   
+   
+    
+    print("Greatest Increase in Profits: %s ($%s)" %(maximummonth, maximum))
 
-        minimum = min(profitlist)
-        print("Greatest Decrease in Profits: %s ($%r)" % (minimum))
+    print("Greatest Decrease in Profits: %s ($%s)" % (minimummonth, minimum))
     
   
    
