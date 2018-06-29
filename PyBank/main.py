@@ -13,14 +13,12 @@ with open(budgetCSV, newline="") as csvfile:
 
     monthcount = 0
     netprofitloss = 0
-    increase = 0
-    decrease = 0
+  
     maximum = 0
     maximummonth = 0
     minimum = 0
     minimummonth = 0
-    rowints = []
-    months = []
+  
 
     for row in csvreader:
         monthcount = monthcount +1
@@ -32,7 +30,8 @@ with open(budgetCSV, newline="") as csvfile:
             minimum = int(row[1])
             minimummonth = str(row[0])
         
-      
+    print("Financial Analysis")
+    print("----------------------------")  
     print("Total Months: " + str(monthcount))
     print("Total: $" + str(netprofitloss))
     print("Average Change: $" + str(round((netprofitloss/monthcount), 2)))
