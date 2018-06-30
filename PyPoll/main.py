@@ -1,7 +1,7 @@
 import os
 import csv
 
-# Path to collect data from the Resources folder
+
 budgetCSV = os.path.join('election_data.csv')
 
 with open(budgetCSV, newline="") as csvfile:
@@ -16,12 +16,12 @@ with open(budgetCSV, newline="") as csvfile:
         candidate = row[2]
         listcandidates.append(candidate)
         
-    #print(votecount)
+
     candidates = []
     for cand in listcandidates:
             if cand not in candidates:
                 candidates.append(cand)
-    #print(candidates)
+
 
     votecounts = [0, 0, 0, 0]
 
@@ -34,7 +34,7 @@ with open(budgetCSV, newline="") as csvfile:
             votecounts[2] += 1
         else:
             votecounts[3] += 1           
-    #print(votecounts)
+
 
     percents = []
 
@@ -51,8 +51,7 @@ with open(budgetCSV, newline="") as csvfile:
         if votecounts[i] > winnervote:
             winnervote = votecounts[i]
             maxIndex = i
-    #print(winnervote)
-    #print(winnerindex)
+   
 
     print("Election Results")
     print("-------------------------")
@@ -67,5 +66,15 @@ with open(budgetCSV, newline="") as csvfile:
     print("-------------------------")
 
          
+text_file = open("Output.txt", "w")
+text_file.write("Election Results" +"\n" +
+                "----------------------------" +"\n" +
+                candidates[0] + ": " + str(percents[0]) + "% (" + str(votecounts[0]) + ")" + "\n" + 
+                candidates[1] + ": " + str(percents[1]) + "% (" + str(votecounts[1]) + ")" + "\n" +
+                candidates[2] + ": " + str(percents[2]) + "% (" + str(votecounts[2]) + ")" + "\n" +
+                candidates[3] + ": " + str(percents[3]) + "% (" + str(votecounts[3]) + ")" + "\n" +
+                "-------------------------" + "\n"
+                "Winner: %s" % (candidates[winnerindex]) + "\n"
+                "-------------------------")
 
 
