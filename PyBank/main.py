@@ -13,6 +13,10 @@ with open(budgetCSV, newline="") as csvfile:
 
     monthcount = 0
     netprofitloss = 0
+
+    profitorloss = 1154293
+    listprofitloss = []
+    
   
     maximum = 0
     maximummonth = 0
@@ -23,18 +27,28 @@ with open(budgetCSV, newline="") as csvfile:
     for row in csvreader:
         monthcount = monthcount +1
         netprofitloss += int(row[1])
+
+        profitloss = int(row[1]) - profitorloss
+        listprofitloss.append(profitloss)
+        profitorloss = int(row[1])
+
+
+
         if int(row[1]) > maximum:
             maximum = int(row[1])
             maximummonth = str(row[0])
         if int(row[1]) < minimum:
             minimum = int(row[1])
             minimummonth = str(row[0])
-        
+    averagechange = sum(listprofitloss)/(len(listprofitloss)-1)
+
     print("Financial Analysis")
     print("----------------------------")  
     print("Total Months: " + str(monthcount))
     print("Total: $" + str(netprofitloss))
-    print("Average Change: $" + str(round((netprofitloss/monthcount), 2)))
+   
+   
+    print("Average Change: $" + str(round((averagechange), 2)))
 
    
    
@@ -47,7 +61,7 @@ text_file.write("Financial Analysis" +"\n" +
                 "----------------------------" +"\n" +
                 "Total Months: " + str(monthcount) + "\n" + 
                 "Total: $" + str(netprofitloss) + "\n" +
-                "Average Change: $" + str(round((netprofitloss/monthcount), 2)) + "\n" +
+                "Average Change: $" + str(round((averagechange), 2)) + "\n" +
                 "Greatest Increase in Profits: %s ($%s)" %(maximummonth, maximum) + "\n" +
                 "Greatest Decrease in Profits: %s ($%s)" % (minimummonth, minimum) + "\n")
 
