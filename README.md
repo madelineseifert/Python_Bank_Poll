@@ -2,7 +2,6 @@
 
 ## PyBank
 
-![Revenue](Images/revenue-per-lead.jpg)
 
 * In this challenge, I was tasked with creating a Python script for analyzing the financial records of your company. The set of financial data is called [budget_data.csv](PyBank/Resources/budget_data.csv). The dataset is composed of two columns: `Date` and `Profit/Losses`. 
 
@@ -20,7 +19,6 @@
   
   ## PyPoll
 
-![Vote-Counting](Images/Vote_counting.jpg)
 
 * In this challenge, I was tasked with helping a small, rural town modernize its vote-counting process. 
 
